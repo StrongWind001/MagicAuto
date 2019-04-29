@@ -1,0 +1,2 @@
+# MagicAuto
+appium+python
