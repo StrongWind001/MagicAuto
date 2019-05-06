@@ -24,18 +24,18 @@ def top(param):
          the assembled command string
 
     """
-    paramStand = {"H":"optional",
-                  "k":"optional",
-                  "o":"optional",
-                  "O":"optional",
-                  "s":"optional",
-                  "b":"optional",
-                  "d":"optional",
-                  "m":"optional",
-                  "n":"optional",
-                  "p":"optional",
-                  "u":"optional",
-                  "q":"optional"
+    paramStand = {"H":"option",
+                  "k":"option",
+                  "o":"option",
+                  "O":"option",
+                  "s":"option",
+                  "b":"option",
+                  "d":"option",
+                  "m":"option",
+                  "n":"option",
+                  "p":"option",
+                  "u":"option",
+                  "q":"option"
     }
     paramCheck(paramStand,param)
     cmd = "top"

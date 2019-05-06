@@ -14,8 +14,7 @@ class MockLogger(object):
         self.info = self.error = self.critical = self.debug
 
     def debug(self, msg):
-        print
-        "LOGGER:" + msg
+        print("LOGGER:" + msg)
 
 
 class cmd(object):
@@ -24,24 +23,24 @@ class cmd(object):
     """
 
 
-    def __init__(self, cmd):
-        self.cmd = cmd
+    def __init__(self, cmdStr):
+        self.cmdStr = cmdStr
         self.ret_code = None
         self.ret_info = None
         self.err_info = None
         self.logger = MockLogger()
 
     def run(self):
-        self.logger.debug("run %s" % self.cmd)
-        self._process = subprocess.Popen(self.cmd, shell=True,
+        self.logger.debug("run %s" % self.cmdStr)
+        self._process = subprocess.Popen(self.cmdStr, shell=True,
                                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         self.wait()
 
     def wait(self):
-        self.logger.debug("waiting %s" % self.cmd)
+        self.logger.debug("waiting %s" % self.cmdStr)
         self.ret_info, self.err_info = self._process.communicate()
         self.ret_code = self._process.returncode
-        self.logger.debug("waiting %s done. return code is %d" % (self.cmd,
+        self.logger.debug("waiting %s done. return code is %d" % (self.cmdStr,
                                                                   self.ret_code))
 
     def get_status(self):
@@ -50,11 +49,11 @@ class cmd(object):
             status = "RUNNING"
         else:
             status = "FINISHED"
-        self.logger.debug("%s status is %s" % (self.cmd, status))
+        self.logger.debug("%s status is %s" % (self.cmdStr, status))
         return status
 
 
     def close(self, sig):
-        self.logger.debug("send signal %s to %s" % (sig, self.cmd))
+        self.logger.debug("send signal %s to %s" % (sig, self.cmdStr))
         os.kill(self._process.pid, sig)
 

@@ -1,0 +1,9 @@
+appium:
+ - devices: JTJ4C16331013562
+   port: 4723
+   cmd: appium  -a 127.0.0.1 -p 4723 -bp 4733
+   platformName: android
+ - devices: DU2TAN15AJ049163
+   port: 4724
+   cmd: appium  -a 127.0.0.1 -p 4724 -bp 4734
+   platformName: android
